@@ -19,7 +19,7 @@ before_install:
   - nvm install 6 # install Node v6
   - "php -S localhost:8000 &"
   - sleep 3
-  - "content=$(curl -L localhost:8000/zenphoto/)"
+  - "content=$(curl -L localhost:8000/zenphoto/index.php)"
   - echo $content
 install: "npm install"
 script: "npm test"
