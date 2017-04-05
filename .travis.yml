@@ -17,7 +17,7 @@ before_install:
   - export NVM_DIR="$HOME/.nvm"
   - '[ -s "$NVM_DIR/nvm.sh" ] \&& \. "$NVM_DIR/nvm.sh"'  # This loads nvm
   - nvm install 6 # install Node v6
-  - "php -S localhost:8000 ./index.php &"
+  - "php -S localhost:8000 &"
   - sleep 3
   - "content=$(curl -L localhost:8000/zenphoto/)"
   - echo $content
