@@ -6,7 +6,8 @@ services:
 before_install:
   - "mysql -e 'CREATE DATABASE IF NOT EXISTS test;'"
   - "wget https://github.com/zenphoto/zenphoto/archive/zenphoto-1.4.13.tar.gz  -O ./zenphoto.tar.gz"
-  - "tar -xvf ./zenphoto.tar.gz ./zenphoto/"
+  - mkdir zenphoto
+  - "tar -xvf ./zenphoto.tar.gz -C ./zenphoto/"
   - "wget https://raw.githubusercontent.com/creationix/nvm/v0.31.0/nvm.sh -O ~/.nvm/nvm.sh"
   - source ~/.nvm/nvm.sh
   - export NVM_DIR="$HOME/.nvm"
