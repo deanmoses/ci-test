@@ -22,7 +22,9 @@ before_install:
   - pwd
   - ls
   - echo Port $PORT
-  - "content=$(curl -L localhost:8080)"
+  - "php -S localhost:8000 ./index.php &"
+  - sleep 3
+  - "content=$(curl -L localhost:8000)"
   - echo $content
 install: "npm install"
 script: "npm test"
