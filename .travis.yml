@@ -9,10 +9,8 @@ addons:
     - subdomain.test.com
 before_install:
   - mkdir zenphoto
-  - cd zenphoto
   - "wget https://github.com/zenphoto/zenphoto/archive/zenphoto-1.4.13.tar.gz  -O ./zenphoto.tar.gz"
-  - "tar -xvf ./zenphoto.tar.gz -C  --strip-components=1 --show-transformed"
-  - cd ..
+  - "tar -xvf ./zenphoto.tar.gz -C  --strip-components=1 --show-transformed -C zenphoto"
   - "mysql -e 'CREATE DATABASE IF NOT EXISTS test;'"
   - "php -S localhost:8000 &"
   - sleep 3
