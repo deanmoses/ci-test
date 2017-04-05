@@ -15,5 +15,6 @@ before_install:
   - node --version
   - echo $TRAVIS_BUILD_DIR
   - pwd
+  - ls
 install: "npm install"
 script: "npm test"
