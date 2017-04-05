@@ -5,11 +5,14 @@ services:
   - mysql
 before_install:
   - "mysql -e 'CREATE DATABASE IF NOT EXISTS test;'"
+  - "wget https://github.com/zenphoto/zenphoto/archive/zenphoto-1.4.13.tar.gz  -O /tmp/zenphoto.tar.gz"
+  - "tar -xvf /tmp/zenphoto.tar.gz"
   - "wget https://raw.githubusercontent.com/creationix/nvm/v0.31.0/nvm.sh -O ~/.nvm/nvm.sh"
   - source ~/.nvm/nvm.sh
   - export NVM_DIR="$HOME/.nvm"
   - '[ -s "$NVM_DIR/nvm.sh" ] \&& \. "$NVM_DIR/nvm.sh"'  # This loads nvm
   - nvm install 6 # install Node v6
   - node --version
+  - echo %TRAVIS_BUILD_DIR%
 install: "npm install"
 script: "npm test"
