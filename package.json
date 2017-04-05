@@ -6,7 +6,7 @@
     "test": "mocha"
   },
   "author": "moses@tacocat.com",
-  "license": "MIT",
+  "license": "(MIT OR Apache-2.0)",
   "devDependencies": {
     "chai": "^3.5.0",
     "chai-http": "^3.0.0",
