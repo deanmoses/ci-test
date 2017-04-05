@@ -4,6 +4,7 @@ php:
 services:
   - mysql
 before_install:
+  - "mysql -e 'CREATE DATABASE IF NOT EXISTS test;'"
   - "wget https://raw.githubusercontent.com/creationix/nvm/v0.31.0/nvm.sh -O ~/.nvm/nvm.sh"
   - source ~/.nvm/nvm.sh
   - export NVM_DIR="$HOME/.nvm"
