@@ -21,7 +21,7 @@ before_install:
   - echo $TRAVIS_BUILD_DIR
   - pwd
   - ls
-  - "content=$(curl http://subdomain.test.com)"
+  - "content=$(curl -L localhost)"
   - echo $content
 install: "npm install"
 script: "npm test"
