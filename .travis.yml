@@ -13,6 +13,7 @@ before_install:
   - '[ -s "$NVM_DIR/nvm.sh" ] \&& \. "$NVM_DIR/nvm.sh"'  # This loads nvm
   - nvm install 6 # install Node v6
   - node --version
-  - echo %TRAVIS_BUILD_DIR%
+  - echo $TRAVIS_BUILD_DIR
+  - pwd
 install: "npm install"
 script: "npm test"
