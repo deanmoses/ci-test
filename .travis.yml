@@ -8,18 +8,20 @@ addons:
     - test.com
     - subdomain.test.com
 before_install:
-  - "mysql -e 'CREATE DATABASE IF NOT EXISTS test;'"
-  - "wget https://github.com/zenphoto/zenphoto/archive/zenphoto-1.4.13.tar.gz  -O ./zenphoto.tar.gz"
   - mkdir zenphoto
-  - "tar -xvf ./zenphoto.tar.gz -C  --strip-components=1 ./zenphoto/"
+  - cd zenphoto
+  - "wget https://github.com/zenphoto/zenphoto/archive/zenphoto-1.4.13.tar.gz  -O ./zenphoto.tar.gz"
+  - "tar -xvf ./zenphoto.tar.gz -C  --strip-components=1"
+  - cd ..
+  - "mysql -e 'CREATE DATABASE IF NOT EXISTS test;'"
+  - "php -S localhost:8000 &"
+  - sleep 3
+  - "content=$(curl -L localhost:8000/zenphoto/index.php)"
+  - echo $content
   - "wget https://raw.githubusercontent.com/creationix/nvm/v0.31.0/nvm.sh -O ~/.nvm/nvm.sh"
   - source ~/.nvm/nvm.sh
   - export NVM_DIR="$HOME/.nvm"
   - '[ -s "$NVM_DIR/nvm.sh" ] \&& \. "$NVM_DIR/nvm.sh"'  # This loads nvm
   - nvm install 6 # install Node v6
-  - "php -S localhost:8000 &"
-  - sleep 3
-  - "content=$(curl -L localhost:8000/zenphoto/index.php)"
-  - echo $content
 install: "npm install"
 script: "npm test"
