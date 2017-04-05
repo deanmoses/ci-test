@@ -1,0 +1,16 @@
+{
+  "name": "continuous-integration-test",
+  "version": "0.0.0",
+  "description": "Testing continuous integration on Github commit",
+  "scripts": {
+    "test": "mocha"
+  },
+  "author": "moses@tacocat.com",
+  "license": "MIT",
+  "devDependencies": {
+    "chai": "^3.5.0",
+    "chai-http": "^3.0.0",
+    "chai-json-schema": "^1.4.0",
+    "mocha": "^3.2.0"
+  }
+}
