@@ -21,7 +21,7 @@ before_install:
   - "content=$(curl -L localhost:8000/zenphoto/index.php)"
   - echo $content
   # Hit Zenphoto's setup page, which will among other things create the database tables
-  - "setupResults=$(curl -L localhost:8000/zenphoto/zp-core/setup/index.php?checked&update&mod_rewrite=ON)"
+  - "setupResults=$(curl -L --data 'checked&update&mod_rewrite=ON' localhost:8000/zenphoto/zp-core/setup/index.php)"
   - echo $setupResults
   # Travis CI has a very old version of Node.js.  Update it.
   # Install a more recent version of Node.js's nvm
@@ -29,6 +29,7 @@ before_install:
   - source ~/.nvm/nvm.sh
   - export NVM_DIR="$HOME/.nvm"
   - '[ -s "$NVM_DIR/nvm.sh" ] \&& \. "$NVM_DIR/nvm.sh"'  # This loads nvm
-  - nvm install 6 # install Node v6
+  # install Node.js v6
+  - nvm install 6 
 install: "npm install"
 script: "npm test"
