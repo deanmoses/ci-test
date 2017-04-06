@@ -13,7 +13,7 @@ before_install:
   - "tar -xvf ./zenphoto.tar.gz -C zenphoto --strip-components=1 --show-transformed "
   - cp zenphoto.cfg.php zenphoto/zp-data/
   - "mysql -e 'CREATE DATABASE IF NOT EXISTS zenphoto;'"
-  - "mysql -e 'GRANT ALL PRIVILEGES ON zenphoto.* TO travis@localhost IDENTIFIED BY 'travis';"
+  - "mysql -e 'GRANT ALL PRIVILEGES ON zenphoto.* TO travis@localhost IDENTIFIED BY \'travis\';'"
   - "mysql -e 'FLUSH PRIVILEGES;'"
   - "php -S localhost:8000 &" # Start php's internal webserver
   - sleep 3
