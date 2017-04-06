@@ -8,17 +8,23 @@ addons:
     - test.com
     - subdomain.test.com
 before_install:
+  # Install Zenphoto
   - mkdir zenphoto
   - "wget https://github.com/zenphoto/zenphoto/archive/zenphoto-1.4.13.tar.gz  -O ./zenphoto.tar.gz"
   - "tar -xvf ./zenphoto.tar.gz -C zenphoto --strip-components=1 --show-transformed "
   - cp zenphoto.cfg.php zenphoto/zp-data/
   - "mysql -e 'CREATE DATABASE IF NOT EXISTS zenphoto;'"
- # - "mysql -e 'GRANT ALL PRIVILEGES ON zenphoto.* TO travis@localhost IDENTIFIED BY \'travis\';'"
+  # - "mysql -e 'GRANT ALL PRIVILEGES ON zenphoto.* TO travis@localhost IDENTIFIED BY \'travis\';'"
   #- "mysql -e 'FLUSH PRIVILEGES;'"
   - "php -S localhost:8000 &" # Start php's internal webserver
   - sleep 3
   - "content=$(curl -L localhost:8000/zenphoto/index.php)"
   - echo $content
+  # Hit Zenphoto's setup page, which will among other things create the database tables
+  - "setupResults=$(curl -L localhost:8000/zenphoto/zp-core/setup/index.php?checked&update&mod_rewrite=ON)"
+  - echo $setupResults
+  # Travis CI has a very old version of Node.js.  Update it.
+  # Install a more recent version of Node.js's nvm
   - "wget https://raw.githubusercontent.com/creationix/nvm/v0.31.0/nvm.sh -O ~/.nvm/nvm.sh"
   - source ~/.nvm/nvm.sh
   - export NVM_DIR="$HOME/.nvm"
