@@ -21,7 +21,7 @@ before_install:
   - "content=$(curl -L localhost:8000/zenphoto/index.php)"
   - echo $content
   # Hit Zenphoto's setup page, which will among other things create the database tables
-  - "setupResults=$(curl -L --data 'checked&update&mod_rewrite=ON' localhost:8000/zenphoto/zp-core/setup/index.php)"
+  - "setupResults=$(curl -L -u admin: --data 'checked&update&mod_rewrite=ON' localhost:8000/zenphoto/zp-core/setup/index.php)"
   - echo $setupResults
   # Travis CI has a very old version of Node.js.  Update it.
   # Install a more recent version of Node.js's nvm
