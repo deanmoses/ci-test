@@ -26,7 +26,7 @@ SERVER path. For these cases you will need to implement the path overrides below
 $conf['db_software'] = "MySQL";
 /** for historical reasons these fields reference mysql even though the database **
  ** might be a different software                                                **/
-$conf['mysql_user'] = "travis";
+$conf['mysql_user'] = "root";
 $conf['mysql_pass'] = "";
 $conf['mysql_host'] = "127.0.0.1";
 $conf['mysql_database'] = "zenphoto";
