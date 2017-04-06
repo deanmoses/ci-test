@@ -18,15 +18,12 @@ before_install:
   #- "mysql -e 'FLUSH PRIVILEGES;'"
   - "php -S localhost:8000 &" # Start php's internal webserver
   - sleep 3
-  - "content=$(curl -L localhost:8000/zenphoto/index.php)"
-  - echo $content
   # Hit Zenphoto's setup page to set up clean URLs via Apache htaccess
   - "content=$(curl -L localhost:8000/zenphoto/zp-core/setup/index.php?copyhtaccess)"
   - echo $content
   # Hit Zenphoto's setup page to create database tables and other stuff
   - "content=$(curl -L localhost:8000/zenphoto/zp-core/setup/index.php?checked&create=zenphoto_options,zenphoto_albums,zenphoto_images,zenphoto_comments,zenphoto_administrators,zenphoto_admin_to_object,zenphoto_tags,zenphoto_obj_to_tag,zenphoto_captcha,zenphoto_pages,zenphoto_news2cat,zenphoto_news_categories,zenphoto_news,zenphoto_menu,zenphoto_plugin_storage,zenphoto_search_cache&mod_rewrite=ON)"
   - echo $content
-  # Travis CI has a very old version of Node.js.  Update it.
   # Install a more recent version of Node.js's nvm
   - "wget https://raw.githubusercontent.com/creationix/nvm/v0.31.0/nvm.sh -O ~/.nvm/nvm.sh"
   - source ~/.nvm/nvm.sh
